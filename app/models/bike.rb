@@ -5,4 +5,5 @@ class Bike < ApplicationRecord
   validates :name, presence: true
   validates :description, presence: true, length: { minimum: 6 }
   validates :category, presence: true
+  has_one_attached :image
 end
