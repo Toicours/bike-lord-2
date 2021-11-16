@@ -21,7 +21,7 @@
 </div>
 
 <div class="container">
-<% if policy(Bike).create? %>
-<%= link_to 'New bike', new_bike_path %>
-<% end %>
+  <% if policy(Bike).create? %>
+  <%= link_to 'New bike', new_bike_path %>
+  <% end %>
 </div>

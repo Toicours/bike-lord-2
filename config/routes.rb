@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   resources :bikes, only: [:new, :create, :show] do
     resources :rentals, only: [:new, :create]
   end
+  get "/dashboard", to: 'pages#dashboard'
 end
