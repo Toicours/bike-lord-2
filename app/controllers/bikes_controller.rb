@@ -2,7 +2,7 @@ class BikesController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
 
   def index
-    @bikes = Bike.all
+    @bikes = policy_scope(Bike).order(created_at: :desc)
   end
 
   def show
@@ -11,11 +11,13 @@ class BikesController < ApplicationController
 
   def new
     @bike = Bike.new
+    authorize @bike
   end
 
   def create
     @bike = Bike.new(bike_params)
     @bike.user = current_user
+    authorize @bike
     if @bike.save
       redirect_to bike_path(@bike)
     else
