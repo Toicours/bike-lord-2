@@ -1,0 +1,16 @@
+h1 {
+  font-family: $headers-font;
+  font-size: 52px !important;
+}
+h2 {
+  font-family: $headers-font;
+  font-size: 36px;
+}
+p {
+  font-family: $body-font;
+  color: $dark-blue;
+}
+
+label {
+  font-weight: 700;
+}

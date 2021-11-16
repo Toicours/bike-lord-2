@@ -10,3 +10,17 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+.navbar-lewagon a, i {
+  color: #219EBC !important;
+  font-weight: 700;
+  &:hover{
+    color: #24ABCB !important;
+    transition-duration: 300ms;
+  }
+}
+.navbar-lewagon-menu a {
+  font-weight: 400 !important;
+}
+.navbar-lewagon p {
+  font-weight: 400 !important;
+}
