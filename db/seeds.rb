@@ -9,7 +9,6 @@ User.destroy_all
 
 puts 'seeding ....'
 
-
 @categories = ['Bike', 'Electric Bike', 'Scooter', 'Moto', 'Monocycle']
 @messages = ["It's a wonderful bike!", "What a bike to ride!", "My ass remembers the smoothness of the saddle!"]
 
@@ -19,10 +18,11 @@ api_url = "https://bikeindex.org/api/v3/search"
 bikes = JSON.parse(URI.open(api_url).read)["bikes"]
 p bikes.size
 p "vélos ....."
-path = "app/assets/images/bike_placeholder.png"
+
+path = "https://res.cloudinary.com/dn0driagi/image/upload/v1637080266/development/bike_placeholder_cp9tap.png"
 
 bikes.each do |bike|
-  if bike["description"].nil? ||  bike["description"].size < 6
+  if bike["description"].nil? || bike["description"].size < 6
     description = "#{bike["title"]} #{@messages.sample}"
   else
     description = bike["description"]
@@ -32,13 +32,16 @@ bikes.each do |bike|
   else
     image = bike["large_img"]
   end
-  Bike.create!(
+
+  bike_1 = Bike.create!(
     name: bike["manufacturer_name"],
     description: description,
-    image: image,
     category: @categories.sample,
     available: true,
     price: rand(0.100),
     user: User.first
   )
+
+  file = URI.open(image)
+  bike_1.image.attach(io: file, filename: 'nes.png', content_type: 'image/png')
 end
