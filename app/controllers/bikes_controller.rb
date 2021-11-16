@@ -2,7 +2,11 @@ class BikesController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
 
   def index
-    @bikes = policy_scope(Bike).order(created_at: :desc)
+    if params[:query].present?
+      @bikes = policy_scope(Bike).where(category: params[:query])
+    else
+      @bikes = policy_scope(Bike).order(created_at: :desc)
+    end
   end
 
   def show
