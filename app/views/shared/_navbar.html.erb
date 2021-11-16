@@ -22,7 +22,10 @@
           </li>
         <% else %>
           <li class="nav-item">
-              <%= link_to "Login", new_user_session_path, class: "nav-link navbar-lewagon" %>
+              <%= link_to new_user_session_path, class: "nav-link navbar-lewagon" do %>
+                <i class="far fa-user-circle mr-2"></i>
+                Login
+              <% end %>
           </li>
         <% end %>
       </ul>
