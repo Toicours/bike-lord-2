@@ -10,7 +10,7 @@ User.destroy_all
 puts 'seeding ....'
 
 
-@categories = ["Bike", "Scooter", "Moto"]
+@categories = ['Bike', 'Electric Bike', 'Scooter', 'Moto', 'Monocycle']
 @messages = ["It's a wonderful bike!", "What a bike to ride!", "My ass remembers the smoothness of the saddle!"]
 
 @user1 = User.create!(email: "paulo@gmail.com", is_owner: true, first_name: "Paul", last_name: "Predo", address: "5 rue des Flaques", phone_number: "O611223344", password: "123456")
