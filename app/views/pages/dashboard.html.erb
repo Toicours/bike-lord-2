@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="container">
+    <% if @rentals.any? %>
+    <%= "you are already a renter" %>
+    <% else %>
+    <%= "Start renting now! (buuton)" %>
+    <% end %>
+  </div>
+
+  <div class="container">
+    <% if @bikes.any? %>
+    <%= "you are already an owner" %>
+    <div class="container">
+      <% @bikes.each do |bike| %>
+        <% if policy(bike).edit? %>
+          <%= link_to "Update", edit_bike_path(bike) %>
+        <% end %>
+      <% end %>
+    </div>
+    <% else %>
+    <%= "Start bike-lending now! (button)" %>
+    <% end %>
+  </div>
+
+</div>
