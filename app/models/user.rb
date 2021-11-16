@@ -10,8 +10,6 @@ class User < ApplicationRecord
   validates :phone_number, format: { with: regex_phone_number }, uniqueness: { case_sensitive: false }, presence: true
   validates :address, length: { minimum: 5 }, presence: true
   validates :first_name, :last_name, presence: true
-
-  # has_many :rentals
-  # has_many :bikes, through: :rentals
-
+  has_many :rentals
+  has_many :bikes, through: :rentals
 end
