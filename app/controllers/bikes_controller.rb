@@ -15,6 +15,7 @@ class BikesController < ApplicationController
 
   def create
     @bike = Bike.new(bike_params)
+    @bike.user = current_user
     if @bike.save
       redirect_to bike_path(@bike)
     else
@@ -27,4 +28,5 @@ class BikesController < ApplicationController
   def bike_params
     params.require(:bike).permit(:name, :price, :description, :category, :available, :image)
   end
+
 end

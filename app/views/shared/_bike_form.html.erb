@@ -1,0 +1,8 @@
+<%= simple_form_for @bike do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description, as: :text  %>
+  <%= f.input :category, :collection => ['Bike', 'Electric Bike', 'Scooter', 'Moto', 'Monocycle'], as: :select %>
+  <%= f.input :price %>
+  <%= f.input :image, as: :file %>
+  <%= f.button :submit %>
+<% end %>

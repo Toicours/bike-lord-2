@@ -4,6 +4,7 @@ class Bike < ApplicationRecord
   validates :price, presence: true
   validates :name, presence: true
   validates :description, presence: true, length: { minimum: 6 }
-  validates :category, presence: true
+  validates :category, presence: true, inclusion: { in: ['Bike', 'Electric Bike', 'Scooter', 'Moto', 'Monocycle'],
+                                                    message: "%{ value } is not a valid category." }
   has_one_attached :image
 end
