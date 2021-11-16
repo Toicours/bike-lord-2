@@ -33,7 +33,7 @@ bikes.each do |bike|
     image = bike["large_img"]
   end
 
-  bike_1 = Bike.create!(
+  bike = Bike.create!(
     name: bike["manufacturer_name"],
     description: description,
     category: @categories.sample,
@@ -43,5 +43,5 @@ bikes.each do |bike|
   )
 
   file = URI.open(image)
-  bike_1.image.attach(io: file, filename: 'nes.png', content_type: 'image/png')
+  bike.image.attach(io: file, filename: bike.name, content_type: 'image/png')
 end
