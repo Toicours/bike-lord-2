@@ -19,3 +19,9 @@
     <a class="btn btn-flat" href="#">Search now </a>
   </div>
 </div>
+
+<div class="container">
+<% if policy(Bike).create? %>
+<%= link_to 'New bike', new_bike_path %>
+<% end %>
+</div>
