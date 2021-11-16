@@ -1,0 +1,28 @@
+h1 {
+  font-family: $headers-font;
+  font-size: 52px !important;
+  color: $dark-blue;
+}
+h2 {
+  font-family: $headers-font;
+  font-size: 32px;
+  color: $dark-blue;
+}
+p {
+  font-family: $body-font;
+  color:$dark-blue;
+}
+
+label {
+  font-weight: 700;
+}
+
+.section-heading {
+  margin-top: 56px !important;
+  margin-bottom: 32px;
+}
+.picto {
+  font-size: 72px;
+  margin-right: 24px;
+  color: $light-blue;
+}
