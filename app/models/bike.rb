@@ -7,4 +7,17 @@ class Bike < ApplicationRecord
   validates :category, presence: true, inclusion: { in: ['Bike', 'Electric Bike', 'Scooter', 'Moto', 'Monocycle'],
                                                     message: "%{ value } is not a valid category." }
   has_one_attached :image
+
+require 'date'
+
+  def availability?(start_date_user, end_date_user)
+
+    user_dates = (start_date_user..end_date_user).map(&:to_s)
+    p rentals
+    all_booked_dates = rentals.map do |rental|
+      rental.rental_dates
+    end
+    all_booked_dates = all_booked_dates.flatten
+    (all_booked_dates & user_dates).length > 0 ? false : true
+  end
 end
