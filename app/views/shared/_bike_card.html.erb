@@ -1,6 +1,7 @@
 <div class="bike-card">
   <div class="img-card">
-
+   <%= cl_image_tag(bike.image.key,
+      width: 400, height: 300, crop: :fill) %>
   </div>
   <div class="details-card">
     <div class="details-card-bike">
