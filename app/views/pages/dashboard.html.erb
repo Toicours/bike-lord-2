@@ -1,25 +1,53 @@
-<div class="container">
-  <div class="container">
-    <% if @rentals.any? %>
-    <%= "you are already a renter" %>
-    <% else %>
-    <%= "Start renting now! (button)" %>
-    <% end %>
-  </div>
 
-  <div class="container">
-    <% if @bikes.any? %>
-    <%= "you are already an owner" %>
-    <div class="container">
-      <% @bikes.each do |bike| %>
-        <% if policy(bike).edit? %>
-          <%= link_to "Update", edit_bike_path(bike) %>
-        <% end %>
+<div class="container bg-white">
+  <div class="row">
+    <h1 class="section-heading">My rentals</h1>
+    <div>
+      <% if @rentals.any? %>
+      <%= "you are already a renter" %>
+      <% else %>
+        <div class="empty-card col-md-8 col-sm-12 d-flex align-items-center">
+          <div>
+            <i class="far fa-hand-peace picto mr-3"></i>
+          </div>
+          <div>
+            <h2>You don't have any rental yet !</h2>
+            <p>Feel freedom and smoothness during your journeys. Make a rental to begin your adventure!</p>
+            <button class="btn primary-button">
+              <%= link_to "Rent a bike" %>
+            </button>
+          </div>
+        <div>
       <% end %>
     </div>
-    <% else %>
-    <%= "Start bike-lending now! (button)" %>
-    <% end %>
-  </div>
 
+  </div>
+  <div class="row">
+    <h1 class="section-heading">My Bikes</h1>
+    <div>
+      <% if @bikes.any? %>
+      <%= "you are already an owner" %>
+      <div class="container">
+        <% @bikes.each do |bike| %>
+          <% if policy(bike).edit? %>
+            <%= link_to "Update", edit_bike_path(bike) %>
+          <% end %>
+        <% end %>
+      </div>
+      <% else %>
+        <div class="empty-card col-md-8 col-sm-12 d-flex align-items-center">
+          <div>
+            <i class="fas fa-bicycle picto"></i>
+          </div>
+          <div>
+            <h2>You don't added any bike yet !</h2>
+            <p>Become an owner adding a bike. Make easy money and good friends when lending your bike!</p>
+            <button class="btn secondary-button">
+              <%= link_to "Add a bike" %>
+            </button>
+          </div>
+        <div>
+      <% end %>
+    </div>
+  </div>
 </div>
