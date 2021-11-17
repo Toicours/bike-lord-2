@@ -1,12 +1,12 @@
 class BikesController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
+  before_action :find_bike, only: [:show, :destroy]
 
   def index
     @bikes = policy_scope(Bike).order(created_at: :desc)
   end
 
   def show
-    @bike = Bike.find(params[:id])
     authorize @bike
   end
 
@@ -26,9 +26,19 @@ class BikesController < ApplicationController
     end
   end
 
+  def destroy
+    authorize @bike
+    @bike.destroy
+    redirect_to root_path
+  end
+
   private
 
   def bike_params
     params.require(:bike).permit(:name, :price, :description, :category, :available, :image)
+  end
+
+  def find_bike
+    @bike = Bike.find(params[:id])
   end
 end
