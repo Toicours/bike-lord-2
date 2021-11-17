@@ -5,5 +5,5 @@ Rails.application.routes.draw do
   resources :bikes do
     resources :rentals, only: [:new, :create]
   end
-  get "/dashboard", to: 'pages#dashboard'
+  get "/dashboard", to: 'pages#dashboard', as: 'dashboard'
 end
