@@ -10,5 +10,5 @@ class User < ApplicationRecord
   validates :address, length: { minimum: 5 }, presence: true
   validates :first_name, :last_name, presence: true
   has_many :rentals
-  has_many :bikes, through: :rentals
+  has_many :bikes, dependent: :destroy
 end

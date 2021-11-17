@@ -26,11 +26,12 @@
     <h1 class="section-heading">My Bikes</h1>
     <div>
       <% if @bikes.any? %>
-      <%= "you are already an owner" %>
+      <%= "You have several bikes listed" %>
       <div class="container">
         <% @bikes.each do |bike| %>
+        <%= render 'shared/bike_card', bike: bike %>
           <% if policy(bike).edit? %>
-            <%= link_to "Update", edit_bike_path(bike) %>
+
           <% end %>
         <% end %>
       </div>
