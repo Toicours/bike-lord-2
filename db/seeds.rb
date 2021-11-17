@@ -38,7 +38,7 @@ bikes.each do |bike|
     description: description,
     category: @categories.sample,
     available: true,
-    price: rand(0.100),
+    price: rand(0..100),
     user: User.first
   )
 
