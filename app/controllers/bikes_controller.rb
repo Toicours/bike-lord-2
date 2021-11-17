@@ -7,16 +7,17 @@ class BikesController < ApplicationController
 
   def show
     @bike = Bike.find(params[:id])
+    authorize @bike
   end
 
   def new
-    authorize @bike
     @bike = Bike.new
+    authorize @bike
   end
 
   def create
-    authorize @bike
     @bike = Bike.new(bike_params)
+    authorize @bike
     @bike.user = current_user
     if @bike.save
       redirect_to bike_path(@bike)
