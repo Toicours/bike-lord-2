@@ -1,23 +1,30 @@
 <div class="bike-card">
+
   <div class="img-card">
    <%= cl_image_tag(bike.image.key,
-      width: 400, height: 300, crop: :fill) %>
+      width: 150, height: 150, crop: :fill) %>
   </div>
+
   <div class="details-card">
     <div class="details-card-bike">
       <h4><b><%= bike.name %></b></h4>
       <p><%= bike.category %></p>
     </div>
+
     <div class="details-card-owner">
       <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar" %>
       <p><%= bike.user.first_name %></p>
     </div>
   </div>
+
   <div class="settings-card">
-    <h2><%= bike.price %></h2>
+    <h2><%= bike.price %>€</h2>
+
     <div class="icons-card">
       <i class="far fa-edit"></i>
       <i class="far fa-trash-alt"></i>
     </div>
+
   </div>
+
 </div>
