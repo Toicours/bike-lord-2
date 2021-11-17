@@ -16,9 +16,9 @@
 </div>
 
 <div class="container">
-
-    <%= render 'shared/bike_card' %>
-
+  <% @bikes.each do | bike | %>
+    <%= render 'shared/bike_card', locals: {bike: bike} %>
+  <% end %>
 </div>
 
 <div class="container">
