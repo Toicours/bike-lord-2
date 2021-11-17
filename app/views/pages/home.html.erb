@@ -3,15 +3,18 @@
   <div class="container">
     <%= image_tag("logo_big.png", crop: :fill, class:"mb-5") %>
     <h1><span>Get a bike</span> and <span>ride</span> till' you <span>die</span>!</h1>
-
-    <%= form_tag root_path, method: :get do %>
-        <%= text_field_tag :query,
-        params[:query],
-        class: "form-control mt-4",
-        placeholder: "Find a bike"
-        %>
-      <%= submit_tag "Let's go!", class: "primary-button mt-4" %>
-    <% end %>
+    <div class="row"></div>
+      <div class="col-6">
+      <%= form_tag root_path, method: :get do %>
+          <%= text_field_tag :query,
+          params[:query],
+          class: "form-control mt-4",
+          placeholder: "Find a bike"
+          %>
+        <%= submit_tag "Let's go!", class: "primary-button mt-4" %>
+      <% end %>
+      </div>
+    </div>
   </div>
 </div>
 
