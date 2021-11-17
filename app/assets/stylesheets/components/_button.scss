@@ -15,6 +15,7 @@
   }
   &:visited {
     background-color: #24abcb !important;
+
     color: white;
   }
 }
@@ -24,7 +25,6 @@
   text-decoration: none;
   font-weight: 700;
 }
-
 .secondary-button {
   background-color: $secondary-action !important;
   padding: 16px 24px;
