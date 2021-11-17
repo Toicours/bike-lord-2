@@ -1,19 +1,25 @@
 .primary-button {
   background-color: $primary-action !important;
-  padding: 16px 24px;
+  padding: 12px 32px;
   color: white;
   border-radius: 32px;
-  &:hover{
-    background-color: #24ABCB !important;
+  text-decoration: none;
+  font-weight: 700;
+  &:hover {
+    background-color: #24abcb !important;
+    color: white;
   }
-  &:active{
-    background-color: #29B8DA !important;
+  &:active {
+    background-color: #29b8da !important;
+    color: white;
   }
-  &:visited{
-    background-color: #24ABCB !important;
+  &:visited {
+    background-color: #24abcb !important;
+    color: white;
   }
 }
-.primary-button a, .secondary-button a {
+.primary-button a,
+.secondary-button a {
   color: white;
   text-decoration: none;
   font-weight: 700;
@@ -24,18 +30,16 @@
   padding: 16px 24px;
   color: white;
   border-radius: 32px;
-  &:hover{
-    background-color: #FCA33E !important;
+  &:hover {
+    background-color: #fca33e !important;
+    color: white;
   }
-  &:active{
-    background-color: #FFBA6B !important;
+  &:active {
+    background-color: #ffba6b !important;
+    color: white;
   }
-  &:visited{
-    background-color: #FCA33E !important;
+  &:visited {
+    background-color: #fca33e !important;
+    color: white;
   }
-}
-.primary-button a{
-  color: white;
-  text-decoration: none;
-  font-weight: 700;
 }
