@@ -11,5 +11,4 @@ class PagesController < ApplicationController
     @bikes = policy_scope(Bike).order(created_at: :desc)
   end
 
-
 end
