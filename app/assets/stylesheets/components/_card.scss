@@ -56,3 +56,9 @@
 .bike-grid {
   margin-top: 20px;
 }
+
+@media (max-width: 1080px) {
+  .bike-grid {
+    grid-template-columns: 1fr;
+  }
+}
