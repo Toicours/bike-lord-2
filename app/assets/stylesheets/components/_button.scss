@@ -1,6 +1,6 @@
 .primary-button {
   background-color: $primary-action !important;
-  padding: 12px 32px;
+  padding: 8px 40px;
   color: white;
   border-radius: 32px;
   text-decoration: none;
@@ -27,9 +27,11 @@
 }
 .secondary-button {
   background-color: $secondary-action !important;
-  padding: 16px 24px;
+  padding: 8px 40px;
   color: white;
   border-radius: 32px;
+  text-decoration: none;
+  font-weight: 700;
   &:hover {
     background-color: #fca33e !important;
     color: white;

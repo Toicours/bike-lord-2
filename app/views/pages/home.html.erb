@@ -1,26 +1,35 @@
 
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.1)), url(<%= asset_path('BannerFont.png') %>);">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.1)), url('https://imagizer.imageshack.com/img924/767/uAGSJg.png')">
   <div class="container">
     <h1><span>Get a bike</span> and <span>ride</span> till' you <span>die</span>!</h1>
 
     <%= form_tag root_path, method: :get do %>
         <%= text_field_tag :query,
         params[:query],
-        class: "form-control",
+        class: "form-control mt-4",
         placeholder: "Find a bike"
         %>
-      <%= submit_tag "Search", class: "primary-button" %>
+      <%= submit_tag "Let's go!", class: "primary-button mt-4" %>
     <% end %>
   </div>
 </div>
 
 <div class="container">
-  <h2>Do you wanna add a new bike to your fleet?</h2>
-  <% if policy(Bike).create? %>
-  <%= link_to 'Add a bike', new_bike_path, class:"btn btn-success" %>
-  <% end %>
+  <div class="row d-flex flex-row-reverse">
+    <div class="add-bike-section col-sm-12 col-md-8 col-lg-8 justify-content-end">
+      <h2 class="">Do you wanna add a new bike to your fleet?</h2>
+      <%# <div style="background-image: url('https://imagizer.imageshack.com/img924/2082/BUfG6H.png'); width:100px; height:100px; background-size: cover; background-position: center;"> %>
+      <%# </div> %>
+      <% if policy(Bike).create? %>
+      <%= link_to 'Add a bike', new_bike_path, class:"secondary-button mt-4" %>
+      <% end %>
+    </div>
+  </div>
 </div>
 
+<div class="container">
+<h2><strong>These bikes are waiting for you</strong></h2>
+</div>
 <div class="container bike-grid">
   <% @bikes.each do | bike | %>
     <%= render 'shared/bike_card', bike: bike %>
