@@ -4,7 +4,14 @@
     <h1 class="section-heading">My Rentals</h1>
     <div>
       <% if @rentals.any? %>
-      <%= "you are already a renter" %>
+        <div class="container bike-grid">
+          <% @rentals.each do |rental| %>
+          <%= render 'shared/bike_card_rental', rental: rental %>
+            <% if policy(rental.bike).edit? %>
+
+            <% end %>
+          <% end %>
+        </div>
       <% else %>
         <div class="empty-card col-md-8 col-sm-12 d-flex align-items-center">
           <div>
@@ -26,7 +33,6 @@
     <h1 class="section-heading">My Bikes</h1>
     <div>
       <% if @bikes.any? %>
-     <h2> <%= "You have several bikes listed :" %> </h2>
       <div class="container bike-grid">
         <% @bikes.each do |bike| %>
         <%= render 'shared/bike_card', bike: bike %>
