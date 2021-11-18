@@ -6,7 +6,7 @@
       <% if @rentals.any? %>
         <div class="container bike-grid">
           <% @rentals.each do |rental| %>
-          <%= render 'shared/bike_card_rental', rental: rental %>
+          <%= render 'shared/bike_card', bike: rental.bike %>
             <% if policy(rental.bike).edit? %>
 
             <% end %>
