@@ -1,3 +1,5 @@
+require 'date'
+
 class Bike < ApplicationRecord
   belongs_to :user
   has_many :rentals, dependent: :destroy
@@ -10,7 +12,13 @@ class Bike < ApplicationRecord
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
 
-require 'date'
+  include PgSearch::Model
+  pg_search_scope :search_by_name_description_category,
+    against: [ :name, :description, :category ],
+    using: {
+      tsearch: { prefix: true }
+    }
+
 
   def availability?(start_date_user, end_date_user)
 

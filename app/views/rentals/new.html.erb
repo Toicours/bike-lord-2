@@ -1,2 +1,17 @@
-<h1>Rentals#new</h1>
-<p>Find me in app/views/rentals/new.html.erb</p>
+
+<div class="container">
+<h1 class="section-heading">Rent this bike</h1>
+
+<div class="container d-flex">
+  <div class="row">
+    <div class="col-md-6">
+      <p><strong>You want to rent this bike from YYYYMMDD to YYYYMMDD</strong></p>
+      <%= render 'shared/bike_card_rental'%>
+    </div>
+    <div class="col-md-5">
+      <h3>Add your payment information</h3>
+      <%= render 'shared/payment_form'%>
+    </div>
+  </div>
+</div>
+</div>

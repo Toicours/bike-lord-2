@@ -28,3 +28,28 @@ label {
   margin-right: 24px;
   color: $light-blue;
 }
+.nav-link{
+  color: white !important;
+}
+#dashboard-entry {
+  font-weight: 700;
+}
+.back-link {
+  font-size: 24px;
+  font-family: $headers-font;
+  color: white;
+  font-weight: 700;
+}
+.delete-link {
+  color: $primary-action;
+  text-decoration: none;
+   &:hover {
+    color: #24abcb !important;
+  }
+  &:active {
+    color: #29b8da;
+  }
+  &:visited {
+    color: #24abcb !important;
+  }
+}
