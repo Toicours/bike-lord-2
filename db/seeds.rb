@@ -39,7 +39,8 @@ bikes.each do |bike|
     category: @categories.sample,
     available: true,
     price: rand(0..100),
-    user: User.first
+    user: User.first,
+    address: bike["stolen_location"]
   )
 
   file = URI.open(image)
