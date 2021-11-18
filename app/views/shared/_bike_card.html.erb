@@ -39,9 +39,11 @@
     <h2><%= bike.price %>€</h2>
 
     <div class="icons-card">
-      <%= link_to root_path do %>
-        <i class="far fa-edit delete-link"></i>
-      <% end %>
+    <% if policy(bike).edit? %>
+        <%= link_to edit_bike_path(bike) do %>
+          <i class="far fa-edit delete-link"></i>
+        <% end %>
+    <% end %>
       <% if policy(bike).destroy? %>
         <%= link_to dashboard_path,
             method: :delete,
