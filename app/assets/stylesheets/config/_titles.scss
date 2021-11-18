@@ -39,6 +39,10 @@ label {
   font-family: $headers-font;
   color: white;
   font-weight: 700;
+  text-decoration: none;
+  &:hover {
+    color: white  ;
+  }
 }
 .delete-link {
   color: $primary-action;

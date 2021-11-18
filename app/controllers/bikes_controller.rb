@@ -1,7 +1,6 @@
 class BikesController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
-  before_action :find_bike, only: [:show, :destroy]
-
+  before_action :find_bike, only: [:show, :edit, :update, :destroy]
   def index
     @bikes = policy_scope(Bike)
     if params[:query].present? && params[:end_date].present? && params[:start_date].present?
@@ -70,7 +69,14 @@ class BikesController < ApplicationController
       render :new
     end
   end
-
+  def edit
+    authorize @bike
+  end
+  def update
+    @bike.update(bike_params)
+    authorize @bike
+    redirect_to dashboard_path
+  end
   def destroy
     authorize @bike
     @bike.destroy
@@ -86,5 +92,4 @@ class BikesController < ApplicationController
   def find_bike
     @bike = Bike.find(params[:id])
   end
-
 end

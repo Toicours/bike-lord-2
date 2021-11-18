@@ -47,3 +47,33 @@ bikes.each do |bike|
   file = URI.open(image)
   bike.image.attach(io: file, filename: bike.name, content_type: 'image/png')
 end
+
+
+puts "Creating rentals"
+
+@user2 = User.create!(
+  email: "frabrumi@gmail.com",
+  is_owner: true,
+  first_name: "Fabrice",
+  last_name: "Eloi",
+  address: "5 rue des Etangs",
+  phone_number: "O611223345",
+  password: "123456")
+
+@bike2 = Bike.create!(
+    name: "le velo qui déchire sa maman",
+    description: "c'est vraiment une petite merveille",
+    category: "Bike",
+    available: true,
+    price: 100,
+    user: @user2
+  )
+
+@file = URI.open("https://www.docdusport.com/wp-content/uploads/2020/06/velo-electriqueoutil-atout-pour-cyclisme-sante.jpg")
+@bike2.image.attach(io: @file, filename: @bike2.name, content_type: 'image/png')
+
+start_date = DateTime.strptime("20/11/2020 8:00", "%d/%m/%Y %H:%M")
+
+end_date = DateTime.strptime("22/11/2020 8:00", "%d/%m/%Y %H:%M")
+
+Rental.create!(total_price: 120.56, user: @user2, bike: @bike2, start_date: start_date, end_date: end_date)
