@@ -1,8 +1,8 @@
 class BikesController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
-  before_action :find_bike, only: [:show, :destroy]
+  before_action :find_bike, only: [:show, :edit, :update, :destroy]
   def index
-    
+
     if params[:query].present? && params[:end_date].present? && params[:start_date].present?
       @bikes = Bike.search_by_name_description_category(params[:query]).select {|bike| bike.availability?(params[:start_date], params[:end_date]) }
       @markers = @bikes.geocoded.map do |bike|
@@ -62,6 +62,14 @@ class BikesController < ApplicationController
     else
       render :new
     end
+  end
+  def edit
+    authorize @bike
+  end
+  def update
+    @bike.update(bike_params)
+    authorize @bike
+    redirect_to bike_path(@bike)
   end
   def destroy
     authorize @bike
