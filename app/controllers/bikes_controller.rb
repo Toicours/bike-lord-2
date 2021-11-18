@@ -24,7 +24,8 @@ class BikesController < ApplicationController
         image_url: helpers.asset_url(image)
       }
       end
-
+      p "DEBUG"
+      p @markers
     else
       @bikes = policy_scope(Bike).order(created_at: :desc)
       @markers = @bikes.geocoded.map do |bike|
