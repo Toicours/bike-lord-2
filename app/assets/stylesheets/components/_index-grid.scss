@@ -1,0 +1,15 @@
+.index-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 15px;
+  row-gap: 15px;
+
+}
+
+.cards-column {
+grid-column: 1 / 2;
+}
+
+.map-column {
+  grid-column: 2 / 2;
+}

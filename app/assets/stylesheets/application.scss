@@ -10,11 +10,13 @@
 @import "font-awesome";
 @import 'mapbox-gl/dist/mapbox-gl';
 
-// Your CSS partials
+// // Your CSS partials
 @import "components/index";
 @import "components/navbar";
 @import "components/empty-card";
 @import "components/button";
 @import "components/form";
 @import "components/icon";
+@import "components/index-grid";
+@import "components";
 @import "pages/index";
