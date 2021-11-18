@@ -8,7 +8,23 @@
   <div class="details-card">
     <div class="details-card-bike">
       <h4><b><%= bike.name %></b></h4>
-      <p><%= bike.category %></p>
+      <p>
+      <% if bike.category == "Bike" %>
+        <i class="fas fa-bicycle icon-category"></i><%= bike.category %>
+      <% end %>
+      <% if bike.category == "Scooter" %>
+        <i class="fas fa-tachometer-alt icon-category"></i><%= bike.category %>
+      <% end %>
+      <% if bike.category == "Electric Bike" %>
+        <i class="fas fa-charging-station icon-category"></i><%= bike.category %>
+      <% end %>
+      <% if bike.category == "Moto" %>
+        <i class="fas fa-motorcycle icon-category"></i><%= bike.category %>
+      <% end %>
+      <% if bike.category == "Monocycle" %>
+        <i class="fas fa-dharmachakra icon-category"></i><%= bike.category %>
+      <% end %>
+      </p>
     </div>
 
     <div class="details-card-owner">
