@@ -1,14 +1,15 @@
 class RentalsController < ApplicationController
   def new
-    @user = User.find(params[:user_id])
     @bike = Bike.find(params[:bike_id])
     @rental = Rental.new
+    authorize @bike
   end
 
   def create
     @user = User.find(params[:user_id])
     @bike = Bike.find(params[:bike_id])
     @rental = Rental.new(rental_params)
+    authorize @bike
     @rental.user_id = @user.id
     @rental.bike_id = @bike.id
     if @rental.save
