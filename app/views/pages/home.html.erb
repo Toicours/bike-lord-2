@@ -11,18 +11,24 @@
           class: "form-control mt-4",
           placeholder: "Find a bike"
           %>
+      </div>
+      <div class="row">
+        <div class="col-3">
           <%= date_field_tag :start_date,
           params[:start_date],
           class: "form-control mt-4",
           placeholder: "Start date"
           %>
+        </div>
+        <div class="col-3">
           <%= date_field_tag :end_date,
           params[:end_date],
           class: "form-control mt-4",
           placeholder: "End date"
           %>
-        <%= submit_tag "Browse our bikes!", class: "primary-button mt-4" %>
-      <% end %>
+          <%= submit_tag "Browse our bikes!", class: "primary-button mt-4" %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
@@ -40,3 +46,8 @@
     </div>
   </div>
 </div>
+
+<%# <i class="fa-duotone fa-magnifying-glass"></i> %>
+<%# placeholder dans date
+<%# display des dates %>
+<%# effet fondu navbar  %>
