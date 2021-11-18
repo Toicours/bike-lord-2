@@ -2,56 +2,62 @@ class BikesController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
   before_action :find_bike, only: [:show, :edit, :update, :destroy]
   def index
-
+    @bikes = policy_scope(Bike)
     if params[:query].present? && params[:end_date].present? && params[:start_date].present?
       @bikes = Bike.search_by_name_description_category(params[:query]).select {|bike| bike.availability?(params[:start_date], params[:end_date]) }
-      @markers = @bikes.geocoded.map do |bike|
+      @markers = @bikes.map do |bike|
+        if bike.category == "Bike"
+          image = "VehicleBike.png"
+        elsif bike.category == 'Electric Bike'
+          image = "VehicleElectricBike.png"
+        elsif bike.category == 'Moto'
+          image = "VehicleMoto.png"
+        elsif bike.category == 'Scooter'
+          image = "VehicleScooter.png"
+        elsif bike.category == 'Monocycle'
+          image = "VehicleMonocycle.png"
+        end
       {
         lat: bike.latitude,
         lng: bike.longitude,
         info_window: render_to_string(partial: "info_window", locals: { bike: bike }),
-        # if bike.category == "Bike"
-        #   image_url: helpers.asset_url("REPLACE_THIS_WITH_YOUR_IMAGE_IN_ASSETS")
-        # elsif bike.category == 'Electric Bike'
-        #   image_url: helpers.asset_url("REPLACE_THIS_WITH_YOUR_IMAGE_IN_ASSETS")
-        # elsif bike.category == 'Scooter'
-        #   image_url: helpers.asset_url("REPLACE_THIS_WITH_YOUR_IMAGE_IN_ASSETS")
-        # elsif bike.category == 'Moto'
-        #   image_url: helpers.asset_url("REPLACE_THIS_WITH_YOUR_IMAGE_IN_ASSETS")
-        # elsif bike.category == 'Monocycle'
-        #   image_url: helpers.asset_url("REPLACE_THIS_WITH_YOUR_IMAGE_IN_ASSETS")
-        # end
+        image_url: helpers.asset_url(image)
       }
       end
+
     else
-    @bikes = policy_scope(Bike).order(created_at: :desc)
-    @markers = @bikes.geocoded.map do |bike|
-      {
-        lat: bike.latitude,
-        lng: bike.longitude,
-        info_window: render_to_string(partial: "info_window", locals: { bike: bike }),
-        # if bike.category == "Bike"
-        #   image_url: helpers.asset_url("REPLACE_THIS_WITH_YOUR_IMAGE_IN_ASSETS")
-        # elsif bike.category == 'Electric Bike'
-        #   image_url: helpers.asset_url("REPLACE_THIS_WITH_YOUR_IMAGE_IN_ASSETS")
-        # elsif bike.category == 'Scooter'
-        #   image_url: helpers.asset_url("REPLACE_THIS_WITH_YOUR_IMAGE_IN_ASSETS")
-        # elsif bike.category == 'Moto'
-        #   image_url: helpers.asset_url("REPLACE_THIS_WITH_YOUR_IMAGE_IN_ASSETS")
-        # elsif bike.category == 'Monocycle'
-        #   image_url: helpers.asset_url("REPLACE_THIS_WITH_YOUR_IMAGE_IN_ASSETS")
-        # end
-      }
+      @bikes = policy_scope(Bike).order(created_at: :desc)
+      @markers = @bikes.geocoded.map do |bike|
+        if bike.category == "Bike"
+          image = "VehicleBike.png"
+        elsif bike.category == 'Electric Bike'
+          image = "VehicleElectricBike.png"
+        elsif bike.category == 'Moto'
+          image = "VehicleMoto.png"
+        elsif bike.category == 'Scooter'
+          image = "VehicleScooter.png"
+        elsif bike.category == 'Monocycle'
+          image = "VehicleMonocycle.png"
+        end
+        {
+          lat: bike.latitude,
+          lng: bike.longitude,
+          info_window: render_to_string(partial: "info_window", locals: { bike: bike }),
+          image_url: helpers.asset_url(image)
+        }
       end
     end
   end
+
   def show
     authorize @bike
   end
+
   def new
     @bike = Bike.new
     authorize @bike
   end
+
   def create
     @bike = Bike.new(bike_params)
     authorize @bike
@@ -76,10 +82,13 @@ class BikesController < ApplicationController
     @bike.destroy
     redirect_to root_path
   end
+
   private
+
   def bike_params
     params.require(:bike).permit(:name, :price, :description, :category, :available, :image)
   end
+
   def find_bike
     @bike = Bike.find(params[:id])
   end
