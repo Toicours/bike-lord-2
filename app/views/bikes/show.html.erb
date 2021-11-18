@@ -1,16 +1,18 @@
-<div style="background-color: #8ECAE6;">
+<div style="background-color: #8ECAE6; height: 100vh;" class="d-flex align-items-center">
   <div class="container" style="background-color: #8ECAE6;">
-    <p style="margin-top: 100px;">
-      <i class="fas fa-arrow-left icon-back"></i><span class="back-link">See other bikes</>
-    </p>
     <div class="row d-flex justify-content-center">
+      <div class="row justify-content-center">
+      <p style="margin-top: 100px;" class="col-sm-12 col-md-8 col-lg-8">
+        <i class="fas fa-arrow-left icon-back"></i><span class="back-link">See other bikes</>
+      </p>
+      </div>
       <div class="col-sm-12 col-md-8 col-lg-8 bg-white p-3" style="border-radius: 24px;">
         <div class="row">
-          <div class="col-sm-12 col-md-6 col-lg-6">
+          <div class="col-sm-12 col-md-6 col-lg-6 img-card">
             <%= cl_image_tag(@bike.image.key,
             width: 400, height: 400, crop: :fill) %>
           </div>
-          <div class="col-sm-12 col-md-6 col-lg-6">
+          <div class="col-sm-12 col-md-6 col-lg-6 row">
             <h1><%= @bike.name %></h1>
             <p>
             <% if @bike.category == "Bike" %>
@@ -33,37 +35,37 @@
             <%= image_tag "profile_picture_card.png", class: "avatar" %>
             <p><%= @bike.user.first_name %></p>
             </div>
-            <div class="empty-card">
+            <div class="empty-card-small">
               <p>
                 <span class="quote"><i class="fas fa-quote-left"></i></span>
                 <%= @bike.description %>
                 <span class="quote"><i class="fas fa-quote-right"></i></span>
               </p>
             </div>
-            <div >
-              <div class="d-flex">
-                <div class="w-100 bd-highlight">
-                <%= link_to 'Add a bike', new_bike_path, class:"primary-button", style:"padding: 16px 24px;" %>
-                </div>
-              <div class="flex-shrink-1 bd-highlight">
-              <% if policy(@bike).destroy? %>
-              <i class="far fa-trash-alt delete-link"></i>
-              <%=  link_to "Delete #{@bike.name}",
-                      bike_path(@bike),
-                      method: :delete,
-                      data: { confirm: "Are you sure?" }, class:"delete-link ml-2"%>
-              <% end %>
+            <div class="d-flex justify-content-start">
+              <div class="card-action m-2">
+                <% if policy(@bike).destroy? %>
+                <i class="far fa-trash-alt delete-link mt-3"></i>
+                <%=  link_to "Delete",
+                        bike_path(@bike),
+                        method: :delete,
+                        data: { confirm: "Are you sure?" }, class:"delete-link ml-2"%>
+                <% end %>
               </div>
-              <div class="flex-shrink-1 bd-highlight">
-              <%= link_to 'Add a bike', new_bike_path, class:"primary-button", style:"padding: 16px 24px;" %>
-              </div>
+              <div class="card-action m-2">
+                <% if policy(@bike).destroy? %>
+                <i class="far fa-edit delete-link mt-3"></i>
+                <%=  link_to "Edit",
+                        bike_path(@bike),
+                        method: :delete,
+                        data: { confirm: "Are you sure?" }, class:"delete-link ml-2"%>
+                <% end %>
               </div>
             </div>
+            <%= link_to 'Add a bike', new_bike_path, class:"primary-button text-center m-2", style:"padding: 16px 24px;" %>
           </div>
         </div>
       </div>
     </div>
-
-
   </div>
 </div>
