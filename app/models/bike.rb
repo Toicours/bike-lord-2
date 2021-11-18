@@ -9,6 +9,8 @@ class Bike < ApplicationRecord
   validates :category, presence: true, inclusion: { in: ['Bike', 'Electric Bike', 'Scooter', 'Moto', 'Monocycle'],
                                                     message: "%{ value } is not a valid category." }
   has_one_attached :image
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
 
   include PgSearch::Model
   pg_search_scope :search_by_name_description_category,

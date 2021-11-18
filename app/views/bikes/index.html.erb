@@ -1,8 +1,16 @@
 <div class="container">
-<h2><strong>These bikes are waiting for you</strong></h2>
-</div>
-<div class="container bike-grid">
-  <% @bikes.each do | bike | %>
-    <%= render 'shared/bike_card', bike: bike %>
-  <% end %>
+  <div style="width: 100%; height: 300px;"
+    data-controller="mapbox"
+    data-mapbox-markers-value="<%= @markers.to_json %>"
+    data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
+  
+  <br>
+  
+  <h2><strong>These bikes are waiting for you</strong></h2>
+  <div class="container bike-grid">
+    <% @bikes.each do | bike | %>
+      <%= render 'shared/bike_card', bike: bike %>
+    <% end %>
+  </div>
 </div>
