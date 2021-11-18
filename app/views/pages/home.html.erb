@@ -1,4 +1,3 @@
-
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.1)), url('https://imagizer.imageshack.com/img924/767/uAGSJg.png')">
   <div class="container">
     <%= image_tag("logo_big.png", crop: :fill, class:"mb-5") %>
@@ -10,6 +9,7 @@
           params[:query],
           class: "form-control mt-4",
           placeholder: "Find a bike"
+
           %>
       </div>
       <div class="row">
@@ -17,6 +17,7 @@
           <%= date_field_tag :start_date,
           params[:start_date],
           class: "form-control mt-4",
+          # data: controller_name => flat picker
           placeholder: "Start date"
           %>
         </div>
