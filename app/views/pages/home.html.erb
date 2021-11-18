@@ -19,20 +19,7 @@
 </div>
 
 <div class="container">
-  <div class="row d-flex flex-row-reverse">
-    <div class="add-bike-section col-sm-12 col-md-8 col-lg-8 justify-content-end">
-      <h2 class="">Do you wanna add a new bike to your fleet?</h2>
-      <%# <div style="background-image: url('https://imagizer.imageshack.com/img924/2082/BUfG6H.png'); width:100px; height:100px; background-size: cover; background-position: center;"> %>
-      <%# </div> %>
-      <% if policy(Bike).create? %>
-      <%= link_to 'Add a bike', new_bike_path, class:"secondary-button mt-4" %>
-      <% end %>
-    </div>
-  </div>
-</div>
-
-<div class="container">
-<h2><strong>These bikes are waiting for you</strong></h2>
+<h2 class="mt-5"><strong>These bikes are waiting for you</strong></h2>
 </div>
 <div class="container bike-grid">
   <% @bikes.each do | bike | %>

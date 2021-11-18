@@ -1,7 +1,11 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
-  border-bottom: solid 1px rgba($color: #023047, $alpha: 0.25);
+  background-color: $dark-blue;
+  color: white;
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%;
+  z-index: 1;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -10,4 +14,7 @@
 
 .navbar-lewagon .navbar-brand img {
   width: 40px;
+}
+.nav-item {
+  margin: 0px 24px;
 }
