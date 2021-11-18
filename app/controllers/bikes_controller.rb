@@ -69,7 +69,7 @@ class BikesController < ApplicationController
   def update
     @bike.update(bike_params)
     authorize @bike
-    redirect_to bike_path(@bike)
+    redirect_to dashboard_path
   end
   def destroy
     authorize @bike
