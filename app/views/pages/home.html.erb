@@ -1,6 +1,6 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.1)), url('https://imagizer.imageshack.com/img924/767/uAGSJg.png')">
   <div class="container">
-    <%= image_tag("logo_big.png", crop: :fill, class:"mb-5") %>
+    <%= image_tag("logo_big.png", crop: :fill, class:"mb-3") %>
     <h1><span>Get a bike</span> and <span>ride</span> till' you <span>die</span>!</h1>
     <div class="row"></div>
       <div class="col-6">
@@ -12,8 +12,8 @@
 
           %>
       </div>
-      <div class="row">
-        <div class="col-3">
+      <div class="col-6 row">
+        <div class="col-4">
           <%= date_field_tag :start_date,
           params[:start_date],
           class: "form-control mt-4",
@@ -21,12 +21,14 @@
           placeholder: "Start date"
           %>
         </div>
-        <div class="col-3">
+        <div class="col-4">
           <%= date_field_tag :end_date,
           params[:end_date],
           class: "form-control mt-4",
           placeholder: "End date"
           %>
+        </div>
+        <div class="col-4">
           <%= submit_tag "Browse our bikes!", class: "primary-button mt-4" %>
           <% end %>
         </div>
@@ -36,17 +38,16 @@
 </div>
 
 <div class="container">
-  <div class="row d-flex flex-row-reverse">
-    <div class="add-bike-section col-sm-12 col-md-8 col-lg-8 justify-content-end">
-      <h2 class="">Do you wanna add a new bike to your fleet?</h2>
-      <%# <div style="background-image: url('https://imagizer.imageshack.com/img924/2082/BUfG6H.png'); width:100px; height:100px; background-size: cover; background-position: center;"> %>
-      <%# </div> %>
-      <% if policy(Bike).create? %>
-      <%= link_to 'Add a bike', new_bike_path, class:"secondary-button mt-4" %>
-      <% end %>
-    </div>
+  <h1 style="margin-top: 72px;">Discover the bikes of the community!</h1>
+  <div class="row">
+    <% @bikes.first(3).each do | bike | %>
+      <div class="col-6 p-2">
+        <%= render 'shared/bike_card', bike: bike %>
+      </div>
+    <% end %>
   </div>
 </div>
+
 
 <%# <i class="fa-duotone fa-magnifying-glass"></i> %>
 <%# placeholder dans date

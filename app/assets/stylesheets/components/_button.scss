@@ -5,6 +5,7 @@
   border-radius: 32px;
   text-decoration: none;
   font-weight: 700;
+  border: none !important;
   &:hover {
     background-color: #24abcb !important;
     color: white;
@@ -44,4 +45,8 @@
     background-color: #fca33e !important;
     color: white;
   }
+}
+.browse {
+  background-color: $primary-action !important;
+  border: none !important;
 }
