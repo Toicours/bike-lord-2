@@ -1,5 +1,6 @@
 require 'open-uri'
 require 'json'
+require 'random-location'
 
 puts 'Cleaning DB.....'
 
@@ -40,7 +41,7 @@ bikes.each do |bike|
     available: true,
     price: rand(0..100),
     user: User.first,
-    address: bike["stolen_location"]
+    address: RandomLocation.near_by(48.866667, 2.17340, 4000)
   )
 
   file = URI.open(image)
