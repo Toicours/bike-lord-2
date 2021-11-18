@@ -4,6 +4,11 @@ class BikesController < ApplicationController
 
   def index
     @bikes = policy_scope(Bike).order(created_at: :desc)
+    if params[:query].present? && params[:end_date].present? && params[:start_date].present?
+      @bikes = Bike.search_by_name_description_category(params[:query]).select {|bike| bike.availability?(params[:start_date], params[:end_date]) }
+    else
+      @bikes = policy_scope(Bike).order(created_at: :desc)
+    end
   end
 
   def show

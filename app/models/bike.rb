@@ -1,3 +1,5 @@
+require 'date'
+
 class Bike < ApplicationRecord
   belongs_to :user
   has_many :rentals, dependent: :destroy
@@ -8,7 +10,13 @@ class Bike < ApplicationRecord
                                                     message: "%{ value } is not a valid category." }
   has_one_attached :image
 
-require 'date'
+  include PgSearch::Model
+  pg_search_scope :search_by_name_description_category,
+    against: [ :name, :description, :category ],
+    using: {
+      tsearch: { prefix: true }
+    }
+
 
   def availability?(start_date_user, end_date_user)
 
