@@ -9,6 +9,18 @@ h2 {
   color: $dark-blue;
   font-weight: 700;
 }
+h3 {
+  font-family: $body-font;
+  font-size: 24px !important;
+  color: $dark-blue;
+  font-weight: 700;
+}
+h4 {
+  font-family: $body-font;
+  font-size: 18px !important;
+  color: $dark-blue;
+  font-weight: 700;
+}
 p {
   font-family: $body-font;
   color:$dark-blue;
@@ -61,4 +73,12 @@ label {
   color: $primary-action;
   font-weight: 700;
   text-decoration: none;
+}
+#per-day {
+  color: gray;
+  font-size: 14px;
+}
+#discover {
+  color: white;
+  margin-top: 72px !important;
 }

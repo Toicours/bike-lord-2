@@ -1,0 +1,38 @@
+<div class="bike-card-small d-flex flex-column">
+  <%= link_to bike_path(bike), class:"text-decoration-none" do %>
+    <div class="row">
+        <div class="img-card text-center">
+        <%= cl_image_tag(bike.image.key, crop: :fill, :class => "show-img-width") %>
+        </div>
+    </div>
+
+      <div class="details-card-bike">
+        <div class="row d-flex justify-content-between mt-3">
+          <div class="col-8">
+            <h4><b><%= bike.name %></b></h4>
+          </div>
+          <div class="col-4" style="position: relative; right: 24px;">
+            <h3><%= bike.price %>€<span id="per-day">/day</span></h3>
+          </dic>
+        </div>
+        <p>
+        <% if bike.category == "Bike" %>
+          <i class="fas fa-bicycle icon-category"></i><%= bike.category %>
+        <% end %>
+        <% if bike.category == "Scooter" %>
+          <i class="fas fa-tachometer-alt icon-category"></i><%= bike.category %>
+        <% end %>
+        <% if bike.category == "Electric Bike" %>
+          <i class="fas fa-charging-station icon-category"></i><%= bike.category %>
+        <% end %>
+        <% if bike.category == "Moto" %>
+          <i class="fas fa-motorcycle icon-category"></i><%= bike.category %>
+        <% end %>
+        <% if bike.category == "Monocycle" %>
+          <i class="fas fa-dharmachakra icon-category"></i><%= bike.category %>
+        <% end %>
+        </p>
+      </div>
+    </div>
+  <% end %>
+</div>
