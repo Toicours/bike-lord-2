@@ -8,7 +8,7 @@
 
   <div class="details-card">
     <div class="details-card-bike">
-      <h4><b><%= bike.name %></b></h4>
+      <h3><b><%= bike.name %></b></h3>
 
       <p>
       <% if bike.category == "Bike" %>
@@ -36,8 +36,7 @@
     <% end %>
   </div>
   <div class="settings-card">
-    <h2><%= bike.price %>€</h2>
-
+    <h2><%= bike.price %>€<span id="per-day">/day</span></h2>
     <div class="icons-card">
     <% if policy(bike).edit? %>
         <%= link_to edit_bike_path(bike) do %>
