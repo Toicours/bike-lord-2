@@ -2,7 +2,7 @@
   <div class="container">
     <%= image_tag("logo_big.png", crop: :fill, class:"mb-3") %>
     <h1><span>Get a bike</span> and <span>ride</span> till' you <span>die</span>!</h1>
-    <div class="row"></div>
+    <div class="">
       <div class="col-sm-12 col-md-6 row">
       <%= form_tag bikes_path, method: :get do %>
           <%= text_field_tag :query,
@@ -48,17 +48,18 @@
   </div>
 </div>
 
-<div class="container mt-5">
-  <h2>Discover the bikes of the community!</h2>
-  <div class="row mt-3">
-    <% @bikes.first(4).each do | bike | %>
-      <div class="col-sm-12 col-md-6 col-lg-6 p-2">
-        <%= render 'shared/bike_card', bike: bike %>
-      </div>
-    <% end %>
+<div class="pattern-background">
+  <div class="container" style="margin-top: 72px">
+    <h2>Discover the bikes of the community!</h2>
+    <div class="row mt-3">
+      <% @bikes.first(4).each do | bike | %>
+        <div class="col-sm-12 col-md-6 col-lg-6 p-2">
+          <%= render 'shared/bike_card', bike: bike %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
-
 
 
 <%# <i class="fa-duotone fa-magnifying-glass"></i> %>
