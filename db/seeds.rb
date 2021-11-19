@@ -41,7 +41,7 @@ bikes.each do |bike|
     available: true,
     price: rand(0..100),
     user: User.first,
-    address: RandomLocation.near_by(48.866667, 2.17340, 4000)
+    address: RandomLocation.near_by(48.856614, 2.3522219, 3500)
   )
 
   file = URI.open(image)
