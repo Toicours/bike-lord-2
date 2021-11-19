@@ -6,8 +6,7 @@ before_action :find_rental, only: [:edit, :update, :destroy]
   def new
     @rental = Rental.new
     authorize @bike
-    @start = params[:start_date]
-    @end = params[:end_date]
+
   end
 
   def create
@@ -16,9 +15,7 @@ before_action :find_rental, only: [:edit, :update, :destroy]
     @user = @bike.user
     @rental.bike = @bike
     @rental.user = current_user
-    @start = Date.parse(params[:start_date])
-    @end = Date.parse(params[:end_date])
-    @rental.total_price = @bike.price * (@end - @start).to_i
+    @rental.total_price = @bike.price * (params["rental"]["end_date"].to_date - params["rental"]["start_date"].to_date).to_i
     if @rental.save
       redirect_to dashboard_path
     else
