@@ -1,7 +1,7 @@
 class RentalsController < ApplicationController
   require 'date'
 before_action :find_bike, only: [:new, :create, :show, :edit, :update, :destroy]
-before_action :find_rental, only: [:edit, :update]
+before_action :find_rental, only: [:edit, :update, :destroy]
 
   def new
     @rental = Rental.new
@@ -15,9 +15,11 @@ before_action :find_rental, only: [:edit, :update]
     @rental = Rental.new(rental_params)
     @user = @bike.user
     @rental.bike = @bike
-    @rental.user = @user
-    @rental.total_price = @bike.price * (Date.parse(session[:end_date]) - Date.parse(session[:start_date])).to_i
-    if @rental.save
+    @rental.user = current_user
+    @start = Date.parse(session[:start_date])
+    @end = Date.parse(session[:end_date])
+    @rental.total_price = @bike.price * (@end - @start).to_i
+    if @rental.saveDate.parse(session[:start_date])
       redirect_to dashboard_path
     else
       render :new
