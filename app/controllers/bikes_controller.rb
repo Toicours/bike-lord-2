@@ -23,9 +23,29 @@ class BikesController < ApplicationController
         info_window: render_to_string(partial: "info_window", locals: { bike: bike }),
         image_url: helpers.asset_url(image)
       }
-      end
-      p "DEBUG"
-      p @markers
+    end
+      elsif params[:query].present?
+         @bikes = Bike.search_by_name_description_category(params[:query]).select {|bike| bike.availability?(params[:start_date], params[:end_date]) }
+      @markers = @bikes.map do |bike|
+        if bike.category == "Bike"
+          image = "VehicleBike.png"
+        elsif bike.category == 'Electric Bike'
+          image = "VehicleElectricBike.png"
+        elsif bike.category == 'Moto'
+          image = "VehicleMoto.png"
+        elsif bike.category == 'Scooter'
+          image = "VehicleScooter.png"
+        elsif bike.category == 'Monocycle'
+          image = "VehicleMonocycle.png"
+        end
+      {
+        lat: bike.latitude,
+        lng: bike.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { bike: bike }),
+        image_url: helpers.asset_url(image)
+      }
+    end
+
     else
       @bikes = policy_scope(Bike).order(created_at: :desc)
       @markers = @bikes.geocoded.map do |bike|
