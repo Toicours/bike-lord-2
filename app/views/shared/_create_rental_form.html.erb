@@ -1,0 +1,11 @@
+
+
+<h1>Almost there! </h1>
+<%= simple_form_for [@bike, @user, @rental] do |f| %>
+  <%= f.input :start_date, label:"Rental start date" %>
+  <%= f.input :end_date, label:"Rental end date"  %>
+  <%= f.input :total_price, select: "100" %>
+  <%= f.input :user_id, value: @bike.id %>
+  <%= f.input :bike_id,  value: @user %>
+  <%= f.button :submit, class:"primary-button mt-2" %>
+<% end %>

@@ -1,0 +1,11 @@
+<br>
+<br>
+<br>
+
+<h1>Did you change your mind ? We got you! You can edit the duration of your booking
+</h1>
+<%= simple_form_for [@bike, @rental] do |f| %>
+  <%= f.input :start_date, label:"Rental start date" %>
+  <%= f.input :end_date, label:"Rental end date"  %>
+  <%= f.button :submit, class:"primary-button mt-2" %>
+<% end %>

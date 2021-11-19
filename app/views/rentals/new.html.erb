@@ -6,11 +6,11 @@
   <div class="row">
     <div class="col-md-6">
       <p><strong>You want to rent this bike from YYYYMMDD to YYYYMMDD</strong></p>
-      <%= render 'shared/bike_card_rental'%>
+      <%= render 'shared/bike_card', bike: @bike %>
     </div>
     <div class="col-md-5">
       <h3>Add your payment information</h3>
-      <%= render 'shared/payment_form'%>
+      <%= render 'shared/create_rental_form.html' %>
     </div>
   </div>
 </div>
