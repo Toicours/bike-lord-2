@@ -19,11 +19,9 @@ class Bike < ApplicationRecord
       tsearch: { prefix: true }
     }
 
-
   def availability?(start_date_user, end_date_user)
 
     user_dates = (start_date_user..end_date_user).map(&:to_s)
-    p rentals
     all_booked_dates = rentals.map do |rental|
       rental.rental_dates
     end

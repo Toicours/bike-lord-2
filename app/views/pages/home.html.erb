@@ -5,12 +5,14 @@
     <div class="">
       <div class="col-sm-12 col-md-6 row">
       <%= form_tag bikes_path, method: :get do %>
+      <div class="row">
+        <div class="col-6">
           <%= text_field_tag :query,
           params[:query],
           class: "form-control mt-4",
           placeholder: "Find a bike"
-
           %>
+        </div>
       </div>
       <div class="col-sm-12 col-md-6 row">
         <div class="col-sm-8 col-md-4">
@@ -23,19 +25,21 @@
         </div>
         <div class="col-sm-8 col-md-4">
           <%= date_field_tag :end_date,
+        <div class="col-3">
+           <%= date_field_tag :end_date,
           params[:end_date],
           class: "form-control mt-4",
           placeholder: "End date"
           %>
         </div>
         <div class="col-sm-8 col-md-4">
+      </div>
           <%= submit_tag "Browse our bikes!", class: "primary-button mt-4" %>
           <% end %>
         </div>
       </div>
     </div>
   </div>
-</div>
 
 <div class="container">
   <h1 style="margin-top: 72px;">Latest bikes on the streets!</h1>
