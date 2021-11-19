@@ -1,3 +1,5 @@
+require 'date'
+
 class Rental < ApplicationRecord
   belongs_to :user
   belongs_to :bike
@@ -6,9 +8,6 @@ class Rental < ApplicationRecord
   validates :start_date, presence: true
   validates :end_date, presence: true
 
-  private
-
-  require 'date'
   def rental_dates
     return (start_date..end_date).map(&:to_s)
   end
