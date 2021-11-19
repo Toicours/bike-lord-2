@@ -1,18 +1,22 @@
 class RentalsController < ApplicationController
+  require 'date'
 before_action :find_bike, only: [:new, :create, :show, :edit, :update, :destroy]
-before_action :find_rental, only: [:edit, :update, :create]
+before_action :find_rental, only: [:edit, :update]
 
   def new
     @rental = Rental.new
     authorize @bike
+    @start = session[:start_date]
+    @end = session[:end_date]
   end
 
   def create
     authorize @bike
     @rental = Rental.new(rental_params)
     @user = @bike.user
-    @rental.bike_id = @bike
-    @rental.bike_id = @user
+    @rental.bike = @bike
+    @rental.user = @user
+    @rental.total_price = @bike.price * (Date.parse(session[:end_date]) - Date.parse(session[:start_date])).to_i
     if @rental.save
       redirect_to dashboard_path
     else
@@ -53,6 +57,4 @@ before_action :find_rental, only: [:edit, :update, :create]
   def find_rental
     @rental = Rental.find(params[:id])
   end
-
-
 end
