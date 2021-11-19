@@ -1,5 +1,5 @@
-<div style="height: 100vh;" class="d-flex align-items-center pattern-background">
-  <div class="container">
+<div style="background-color: #8ECAE6; height: 100vh;" class="d-flex align-items-center">
+  <div class="container" style="background-color: #8ECAE6;">
     <div class="row d-flex justify-content-center">
       <div class="row justify-content-center">
       <p style="margin-top: 100px;" class="col-sm-12 col-md-8 col-lg-8">
@@ -62,7 +62,7 @@
               </div>
             </div>
             <% unless current_user == @bike.user %>
-              <%= link_to 'Make a rental', new_bike_rental_path(@bike), class:"primary-button text-center m-2", style:"padding: 16px 24px;" %>
+              <%= link_to 'Make a rental', new_bike_rental_path(@bike, start_date: params[:start_date], end_date: params[:end_date]), class:"primary-button text-center m-2", style:"padding: 16px 24px;" %>
             <% end %>
           </div>
         </div>
