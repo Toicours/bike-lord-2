@@ -4,6 +4,5 @@
 <%= simple_form_for [@bike, @rental] do |f| %>
   <%= f.input :start_date, label:"Rental start date" %>
   <%= f.input :end_date, label:"Rental end date"  %>
-  <%= f.input :total_price, as: :hidden, select: "100" %>
   <%= f.button :submit, class:"primary-button mt-2" %>
 <% end %>

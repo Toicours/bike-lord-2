@@ -48,6 +48,10 @@ class BikesController < ApplicationController
         }
       end
     end
+    session[:start_date] = params[:start_date]
+    session[:end_date] = params[:end_date]
+
+
   end
 
   def show
@@ -80,6 +84,7 @@ class BikesController < ApplicationController
     authorize @bike
     redirect_to dashboard_path
   end
+
   def destroy
     authorize @bike
     @bike.destroy
