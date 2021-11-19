@@ -77,6 +77,8 @@ class BikesController < ApplicationController
   end
 
   def search_query_selection
+    # return nil if @rental.start_date < @rental.end_date
+
     case params.present?
     when params[:query].present? && params[:end_date].present? && params[:start_date].present?
       then @bikes = @bikes.search_by_name_description_category(params[:query]).select {|bike| bike.availability?(params[:start_date], params[:end_date]) }

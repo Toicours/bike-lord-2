@@ -11,4 +11,5 @@ class Rental < ApplicationRecord
   def rental_dates
     return (start_date..end_date).map(&:to_s)
   end
+
 end
