@@ -19,7 +19,7 @@ before_action :find_rental, only: [:edit, :update, :destroy]
     @start = Date.parse(session[:start_date])
     @end = Date.parse(session[:end_date])
     @rental.total_price = @bike.price * (@end - @start).to_i
-    if @rental.saveDate.parse(session[:start_date])
+    if @rental.save
       redirect_to dashboard_path
     else
       render :new
