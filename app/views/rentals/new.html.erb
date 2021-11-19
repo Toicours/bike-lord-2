@@ -1,15 +1,15 @@
-
 <div class="container">
 <h1 class="section-heading">Rent this bike</h1>
 
 <div class="container d-flex">
   <div class="row">
     <div class="col-md-6">
-      <p><strong>You want to rent this bike from YYYYMMDD to YYYYMMDD</strong></p>
+      <h3 class="my-4">You want to rent this bike from <em><%= @start %></em> to <em><%= @end %></em></h3>
       <%= render 'shared/bike_card', bike: @bike %>
+        <h3 class="my-4"> Total price : <%= @bike.price * (Date.parse(session[:end_date]) - Date.parse(session[:start_date])).to_i %> €</h3>
     </div>
     <div class="col-md-5">
-      <h3>Add your payment information</h3>
+      <h3 class="my-4">Add your payment information</h3>
       <%= render 'shared/create_rental_form.html' %>
     </div>
   </div>
