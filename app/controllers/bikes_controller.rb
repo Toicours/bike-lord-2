@@ -70,9 +70,11 @@ class BikesController < ApplicationController
       render :new
     end
   end
+
   def edit
     authorize @bike
   end
+
   def update
     @bike.update(bike_params)
     authorize @bike

@@ -1,22 +1,43 @@
 class RentalsController < ApplicationController
+before_action :find_bike, only: [:new, :create, :show, :edit, :update, :destroy]
+before_action :find_rental, only: [:edit, :update, :create]
+
   def new
-    @bike = Bike.find(params[:bike_id])
     @rental = Rental.new
     authorize @bike
   end
 
   def create
-    @user = User.find(params[:user_id])
-    @bike = Bike.find(params[:bike_id])
-    @rental = Rental.new(rental_params)
     authorize @bike
-    @rental.user_id = @user.id
-    @rental.bike_id = @bike.id
+    @rental = Rental.new(rental_params)
+    @user = @bike.user
+    @rental.bike_id = @bike
+    @rental.bike_id = @user
     if @rental.save
-      redirect_to bike_path(@bike)
+      redirect_to dashboard_path
     else
       render :new
     end
+  end
+
+  def show
+    authorize @bike
+  end
+
+  def edit
+    find_rental
+    authorize @bike
+  end
+
+  def update
+    @rental.update(rental_params)
+    authorize @bike
+    redirect_to dashboard_path
+  end
+
+  def destroy
+    @rental.destroy
+    redirect_to dashboard_path
   end
 
   private
@@ -24,4 +45,14 @@ class RentalsController < ApplicationController
   def rental_params
     params.require(:rental).permit(:total_price, :user_id, :bike_id, :start_date, :end_date)
   end
+
+  def find_bike
+    @bike = Bike.find(params[:bike_id])
+  end
+
+  def find_rental
+    @rental = Rental.find(params[:id])
+  end
+
+
 end
