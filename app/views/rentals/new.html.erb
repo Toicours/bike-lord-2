@@ -1,17 +1,18 @@
-<div class="container">
-<h1 class="section-heading">Rent this bike</h1>
-
+<div style="height: 100vh;" class="d-flex align-items-center pattern-background">
+<div class="container bg-white" style="border-radius: 24px">
+<h1 class="section-heading" id="margin-title">Rent this bike</h1>
 <div class="container d-flex">
   <div class="row">
     <div class="col-md-6">
-      <h3 class="my-4">You want to rent this bike from <em><%= Date.parse(params[:start_date]) %></em> to <em><%= Date.parse(params[:end_date]) %></em></h3>
+      <h4 class="my-4">You want to rent this bike from <em><%= Date.parse(params[:start_date]) %></em> to <em><%= Date.parse(params[:end_date]) %></em></h4>
       <%= render 'shared/bike_card', bike: @bike %>
         <h3 class="my-4"> Total price : <%= @bike.price * (Date.parse(params[:end_date]) - Date.parse(params[:start_date])).to_i %> €</h3>
     </div>
-    <div class="col-md-5">
+    <div class="col-md-6 empty-card p-5">
       <h3 class="my-4">Wanna ride a bit more ? You can always change your dates</h3>
       <%= render 'shared/create_rental_form.html' %>
     </div>
   </div>
+</div>
 </div>
 </div>
